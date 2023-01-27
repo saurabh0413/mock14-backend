@@ -2,6 +2,7 @@ const express = require("express");
 const { connection } = require("./config/db");
 const cors = require("cors");
 const { userRoute } = require("./routes/user.routes");
+const { dashboardController } = require("./controllers/user.controller");
 
 const app = express();
 
@@ -10,7 +11,7 @@ app.use(cors());
 app.get("/", (req, res) => {
   res.send("welcome to home page");
 });
-
+app.get("/dashboard",dashboardController)
 app.use("/user", userRoute);
 app.use("/randomword",userRoute)
 app.listen(8787, async () => {

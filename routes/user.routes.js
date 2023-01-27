@@ -8,4 +8,5 @@ const userRoute = express.Router();
 
 userRoute.post("/login", loginController);
 userRoute.get("/", randomController);
+
 module.exports = { userRoute };

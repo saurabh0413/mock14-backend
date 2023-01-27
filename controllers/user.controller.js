@@ -28,7 +28,13 @@ const randomController = async (req, res) => {
   console.log(word);
   res.send(word);
 };
-// const { userId } = req.body;
-//   const data = await signupModel.find({ _id: userId });
-//   res.send(data);
-module.exports = { loginController, randomController };
+const dashboardController = async (req, res) => {
+  try {
+    const users = await loginModel.find();
+    return res.send(users);
+  } catch (e) {
+    return res.status(500).send(e.message);
+  }
+};
+
+module.exports = { loginController, randomController, dashboardController };
