@@ -1,4 +1,4 @@
- const { loginModel } = require("../models/user.model");
+const { loginModel } = require("../models/user.model");
 
 const { default: mongoose } = require("mongoose");
 
@@ -15,11 +15,20 @@ const loginController = async (req, res) => {
   res.send(user);
 };
 
+const randomController = async (req, res) => {
+  const alphabets = "abcdefghijklmnopqrstuvwxyz";
+  const length = 6;
+  let word = "";
 
-// const getprofile = async (req, res) => {
-//   const { userId } = req.body;
+  for (let i = 0; i < length; i++) {
+    const getit = Math.floor(Math.random() * alphabets.length);
+    const letter = alphabets[getit];
+    word += letter;
+  }
+  console.log(word);
+  res.send(word);
+};
+// const { userId } = req.body;
 //   const data = await signupModel.find({ _id: userId });
 //   res.send(data);
-// };
-
-module.exports = { loginController };
+module.exports = { loginController, randomController };

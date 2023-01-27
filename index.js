@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRoute);
-
+app.use("/randomword",userRoute)
 app.listen(8787, async () => {
   try {
     await connection;
